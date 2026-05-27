@@ -1,0 +1,74 @@
+/* Градиент и анимация хедера */
+.header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  animation: headerSlideDown 0.3s ease-out;
+  padding: 0.5rem 0 !important;
+}
+@keyframes headerSlideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+/* Мобильная кнопка-гамбургер (скрыта на десктопе) */
+.mobile-toggle-btn {
+  display: none !important;
+}
+
+/* Десктопная навигация */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+  .mobile-toggle-btn {
+    display: flex !important;
+  }
+  .desktop-nav {
+    display: none !important;
+  }
+}
+
+/* Кнопки хедера с анимацией */
+.header__btn { transition: all 0.2s ease; font-weight: 500; }
+.header__btn:hover:not(.active):not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.header__btn.active { background: rgba(255,255,255,0.25) !important; border-color: transparent !important; color: white !important; font-weight: 600; }
+.header__btn--logout { background: rgba(255,255,255,0.15) !important; border-color: rgba(255,255,255,0.3) !important; }
+.header__btn--logout:hover { background: rgba(255,255,255,0.25) !important; }
+
+/* Ссылки навигации */
+.header__link { color: rgba(255,255,255,0.95) !important; padding: 0.4rem 0.6rem !important; border-radius: 6px; transition: all 0.2s ease; font-weight: 500; font-size: 0.9rem; }
+.header__link:hover { background: rgba(255,255,255,0.15) !important; color: white !important; }
+.header__link.active { background: rgba(255,255,255,0.25) !important; color: white !important; font-weight: 600; }
+
+/* Гамбургер-иконка */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.95%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Анимация появления */
+@keyframes fadeIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+.animate-fade-in { animation: fadeIn 0.2s ease forwards; }
+
+/* Оверлей мобильного меню */
+.header__mobile-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1050;
+  padding-top: 64px; display: flex; justify-content: center; align-items: flex-start;
+  animation: overlayFadeIn 0.2s ease;
+}
+@keyframes overlayFadeIn { from { opacity:0; } to { opacity:1; } }
+
+/* Контейнер мобильного меню */
+.header__mobile-menu {
+  width: 100%; max-width: 420px; margin: 0 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  animation: slideDown 0.3s ease;
+}
+@keyframes slideDown { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:translateY(0); } }
+
+/* Кнопка закрытия мобильного меню */
+.header__mobile-close { width: 40px; height: 40px; transition: all 0.2s ease; }
+.header__mobile-close:hover { background: rgba(255,255,255,0.25) !important; transform: scale(1.05); }

@@ -1,0 +1,85 @@
+/* Градиентный фон */
+.auth-page {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Карточка с анимацией при наведении */
+.auth-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.auth-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Кнопка с градиентом и микроанимацией */
+.auth-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: all 0.2s ease;
+}
+.auth-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+.auth-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+.auth-btn:disabled {
+  opacity: 0.85;
+}
+
+/* Цвет фокуса полей ввода */
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.15);
+}
+
+/* Цвет ссылки при наведении */
+.link-hover {
+  transition: color 0.2s ease;
+}
+.link-hover:hover {
+  color: #764ba2 !important;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* Анимация тряски */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+.animate-shake {
+  animation: shake 0.3s ease;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+  .auth-card {
+    border-radius: 1rem !important;
+  }
+  .card-body {
+    padding: 1.25rem !important;
+  }
+  .form-floating > label {
+    padding-left: 1rem;
+    font-size: 0.9rem;
+  }
+  .form-control-lg {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  .btn-lg {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}

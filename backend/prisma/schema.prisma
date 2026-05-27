@@ -1,0 +1,97 @@
+// Генератор клиент Prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Подключение к базе данных
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Роли пользователей
+enum UserRole {
+  USER
+  ADMIN
+}
+
+// Типы помещений
+enum RoomType {
+  AUDITORIUM
+  COWORKING
+  CINEMA_HALL
+}
+
+// Способы оплаты
+enum PaymentMethod {
+  CARD
+  CASH
+  ONLINE_TRANSFER
+}
+
+// Статусы заявок на бронирование
+enum BookingStatus {
+  NEW
+  ASSIGNED
+  COMPLETED
+}
+
+// Пользователи системы
+model User {
+  id        String   @id @default(cuid())
+  login     String   @unique
+  password  String
+  fullName  String
+  phone     String
+  email     String
+  role      UserRole @default(USER)
+  bookings  Booking[]
+  reviews   Review[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Помещения для бронирования
+model Room {
+  id       String    @id @default(cuid())
+  name     String
+  bookings Booking[]
+}
+
+// Заявки
+model Booking {
+  id            String        @id @default(cuid())
+  userId        String
+  roomId        String
+  startDate     DateTime
+  paymentMethod PaymentMethod
+  status        BookingStatus @default(NEW)
+  
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  room          Room          @relation(fields: [roomId], references: [id], onDelete: Restrict)
+  review        Review?       
+
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@index([userId])
+  @@index([roomId])
+}
+
+// Отзывы пользователей
+model Review {
+  id        String   @id @default(cuid())
+  bookingId String   @unique
+  userId    String
+  content   String?  @db.Text
+  rating    Int
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  booking   Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([bookingId])
+}

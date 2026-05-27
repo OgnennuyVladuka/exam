@@ -1,0 +1,80 @@
+/* Градиентный фон страницы */
+.app-page {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Карточка формы с анимацией при наведении */
+.form-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.form-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Кнопка с градиентом и микроанимацией */
+.app-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: all 0.2s ease;
+}
+.app-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+.app-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+.app-btn:disabled {
+  opacity: 0.85;
+}
+
+/* Цвет фокуса полей ввода */
+.form-control:focus, .form-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.15);
+}
+
+/* Контроль высоты полей выбора */
+.form-select-lg, .form-control-lg {
+  min-height: 52px;
+  padding: 0.85rem 1rem;
+  line-height: 1.5;
+}
+
+/* Анимация появления */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up { animation: fadeInUp 0.4s ease forwards; }
+
+/* Анимация тряски */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+.animate-shake { animation: shake 0.3s ease; }
+
+/* Анимация pop-in */
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.animate-pop-in { animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+  .form-card { border-radius: 1rem !important; }
+  .card-body { padding: 1.25rem !important; }
+  
+  .form-label { font-size: 0.95rem; margin-bottom: 0.4rem; }
+  .form-select-lg, .form-control-lg {
+    padding: 0.75rem 1rem;
+    min-height: 50px;
+    font-size: 1rem !important;
+  }
+  .btn-lg { padding: 0.75rem; font-size: 1rem; }
+  .display-3 { font-size: 3rem !important; }
+}
