@@ -1,0 +1,10 @@
+Надо поменять
+DATABASE_URL="postgresql://postgres@localhost:5432/exam?schema=public"
+
+Надо применить
+npm i
+npx prisma generate
+npx prisma migrate dev
+npx prisma db seed
+
+не забыть заменить параметры и названия если будут другие а также вставить картинки

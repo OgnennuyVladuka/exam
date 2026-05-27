@@ -96,7 +96,7 @@ export default function PersonalAccount() {
   /* Слайдер */
   const [currentSlide, setCurrentSlide] = useState(0)
   const slides = [
-    'https://picsum.photos/seed/conf1/800/400',
+    'https://picsum.photos/seed/conf1/800/400', /*пример /images/bank.png*/
     'https://picsum.photos/seed/conf2/800/400',
     'https://picsum.photos/seed/conf3/800/400',
     'https://picsum.photos/seed/conf4/800/400'

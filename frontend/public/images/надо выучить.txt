@@ -1,0 +1,23 @@
+#Команды
+Инициализация проекта
+npm init -y
+
+Установка зависимостей
+npm i express cors dotenv bcrypt jsonwebtoken prisma@6 @prisma/client@6
+
+Установка dev-зависимостей
+npm install -D prisma
+
+Инициализация Prisma
+npx prisma init
+
+миграция prisma
+npx prisma migrate dev --name init
+
+запуск сервера npm run dev
+
+#Строчки
+DATABASE_URL="postgresql://postgres:ПАРОЛЬ@localhost:5432/БД?schema=public"
+
+создание реакт + вите
+npm create vite@latest frontend -- --template react
